@@ -10,14 +10,23 @@
     <input type="number" id="itemId" placeholder="Enter item ID">
     <button onclick="getItem()">Get Item</button>
     <button onclick="getAllItems()">Get All Items</button>
+    <h1>Create New Item</h1>
     <form id="addNewItem">
         <input type="text" id="itemNameIn" placeholder="Enter Name of New Item">
         <input type="text" id="itemDescrIn" placeHolder="Enter Name of New Item">
         <input type="text" id="itemTypeIn" placeholder="Enter Type of New Item">
         <button type="submit">Create Item</button>
     </form>
+    <h1>Update Item</h1>
+    <input type="number" id="updateItemId" placeholder="Enter the item ID to update!">
+
+    <h1>Delete Item</h1>
+    <input type="number" id="deleteItemId" placeholder="Enter the item ID to delete!">
 
     <div id="itemData"></div>
+    <div id="updateItemData"></div>
+    <div id="deleteItemData"></div>
+    <div id="result"></div>
 
     <script src="app.js"></script>
 </body>
