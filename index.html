@@ -9,6 +9,13 @@
     <h1>Retrieve Item Data</h1>
     <input type="number" id="itemId" placeholder="Enter item ID">
     <button onclick="getItem()">Get Item</button>
+    <button onclick="getAllItems()">Get All Items</button>
+    <form id="addNewItem">
+        <input type="text" id="itemNameIn" placeholder="Enter Name of New Item">
+        <input type="text" id="itemDescrIn" placeHolder="Enter Name of New Item">
+        <input type="text" id="itemTypeIn" placeholder="Enter Type of New Item">
+        <button type="submit">Create Item</button>
+    </form>
 
     <div id="itemData"></div>
 
