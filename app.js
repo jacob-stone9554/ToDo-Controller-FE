@@ -21,6 +21,9 @@ async function getItem() {
             <p>Something went wrong while retrieving the item data.</p>
         `;
     }
+    document.getElementById('updateItemData').innerHTML = '';
+    document.getElementById('deleteItemData').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
 }
 
 async function getAllItems() {
@@ -48,6 +51,10 @@ async function getAllItems() {
             <p>Something went wrong while retrieving the item's data</p>
         `;
     };
+
+    document.getElementById('updateItemData').innerHTML = '';
+    document.getElementById('deleteItemData').innerHTML = '';
+    document.getElementById('result').innerHTML = '';
 }
 
 async function createNewItem(event) {
@@ -94,6 +101,10 @@ async function createNewItem(event) {
         `;
         console.error("ERROR CAUGHT BY THE CATCH BLOCK", error);
     }
+
+    document.getElementById('itemData').innerHTML = '';
+    document.getElementById('updateItemData').innerHTML = '';
+    document.getElementById('deleteItemData').innerHTML = '';
 }
 
 // Attach the submit event to the form
@@ -126,6 +137,9 @@ async function getUpdateItem() {
         } catch (error) {
             console.error("Error fetching item:", error);
         }
+
+        document.getElementById('itemData').innerHTML = '';
+        document.getElementById('deleteItemData').innerHTML = '';
     }
 }
 
@@ -186,8 +200,6 @@ async function getDeleteItem() {
                     <p>Description: ${item.description}</p>
                     <button onclick="deleteItem(${item.id})">Delete This Item</button>
                 `;
-
-                document.getElementById('itemData').innerHTML = '';
             } else {
                 document.getElementById('deleteItemData').innerHTML = `
                     <h2>Item Not Found</h2>
@@ -197,6 +209,10 @@ async function getDeleteItem() {
         } catch (error) {
             console.error("Error fetching item:", error);
         }
+
+        document.getElementById('itemData').innerHTML = '';
+        document.getElementById('updateItemData').innerHTML = '';
+        document.getElementById('result').innerHTML = '';
     }
 }
 
