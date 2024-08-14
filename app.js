@@ -1,3 +1,11 @@
+/**
+ * getItem() takes the number entered into the input field and calls the api to get the item with that ID
+ * 
+ * if the response is ok, populate the itemData div with content. 
+ * Otherwise, display some sort of error message (404 or something went wrong)
+ * 
+ * set any other result content divs (updateItemData, deleteItemData) to empty, prevent clutter on the screen
+ */
 async function getItem() {
     const itemId = document.getElementById('itemId').value;
     const response = await fetch(`https://localhost:7156/Item/${itemId}`);
@@ -26,6 +34,17 @@ async function getItem() {
     document.getElementById('result').innerHTML = '';
 }
 
+/**
+ * getAllItems() retrieves all items in the DB from the API
+ * 
+ * if the response is ok, populate the itemData div with the information.
+ * for each item, add the item id, name, description and a break line
+ * 
+ * otherwise, display an error message.
+ * 
+ * set the other result divs (updateItemData, deleteItemData, etc.) to empty to
+ *      prevent clutter on the screen
+ */
 async function getAllItems() {
     const response = await fetch('https://localhost:7156/Item');
 
@@ -57,6 +76,19 @@ async function getAllItems() {
     document.getElementById('result').innerHTML = '';
 }
 
+/**
+ * createNewItem(event) creates a new item and attaches it to a POST request to the API
+ * the function listens for an event (click on the submit button) before it executes.
+ * 
+ * get the three values in the field, assign them to an object item.
+ * POST that item to the API.
+ * 
+ * If the response is ok (post was successful) display the newly created item.
+ * otherwise, display an error message.
+ * 
+ * set the other result divs (updateItemData, deleteItemData, etc.) to empty to
+ *      prevent clutter on the screen
+ */
 async function createNewItem(event) {
     event.preventDefault(); // Prevent form from submitting the traditional way
 
@@ -110,6 +142,14 @@ async function createNewItem(event) {
 // Attach the submit event to the form
 document.getElementById('addNewItem').addEventListener('submit', createNewItem);
 
+/**
+ * getUpdatedItem() fetches the desired item to update from the API
+ * 
+ * if the response is ok, display a form where the user can update the data and submit it.
+ * otherwise, display an error message.
+ * 
+ * set the other results divs (itemData, deleteItemData, etc.) to empty to keep the screen free from clutter.
+ */
 async function getUpdateItem() {
     const itemId = document.getElementById('updateItemId').value;
 
@@ -143,6 +183,14 @@ async function getUpdateItem() {
     }
 }
 
+/**
+ * saveUpdatedItem(id) takes the id of the retrieved item to update and the values entered in 
+ *      the input fields and stores them in an object updatedItem. updatedItem is sent with a PUT
+ *      request to the API.
+ * 
+ * if the response is ok, then display the updated item.
+ * otherwise, display an error message.
+ */
 async function saveUpdatedItem(id) {
     const name = document.getElementById('updateItemName').value;
     const description = document.getElementById('updateItemDescr').value;
@@ -184,7 +232,15 @@ async function saveUpdatedItem(id) {
 // Attach the updateItem function to the blur event of the input field
 document.getElementById('updateItemId').addEventListener('blur', getUpdateItem);
 
-// Function to fetch and display the item to be deleted
+/**
+ * getDeleteItem fetches the item to be deleted and displays it to the user
+ * 
+ * if the response is okay, display the item to be deleted and show a button to send the delete request.
+ * otherwise, display an error message.
+ * 
+ * set the other result divs (updateItemData, itemData, etc.) to empty to
+ *      prevent clutter on the screen
+ */
 async function getDeleteItem() {
     const itemId = document.getElementById('deleteItemId').value;
 
@@ -216,7 +272,13 @@ async function getDeleteItem() {
     }
 }
 
-// Function to delete the item
+/**
+ * deleteItem(id) deletes an item from the from the database with a DELETE request.
+ * it executes when the delete button is clicked.
+ * 
+ * if the response is ok, display a success message.
+ * otherwise, display an error message.
+ */
 async function deleteItem(id) {
     try {
         const response = await fetch(`https://localhost:7156/Item/${id}`, {
